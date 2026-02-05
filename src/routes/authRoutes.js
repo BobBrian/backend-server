@@ -10,10 +10,8 @@ router.post('/register', (req, res) => {
     const { username, password } = req.body
     // save the username and an irreversibly encrypted password
     // save gilgamesh@gmail.com | aklsdjfasdf.asdf..qwe..q.we...qwe.qw.easd
-
     // encrypt the password
     const hashedPassword = bcrypt.hashSync(password, 8)
-
     // save the new user and hashed password to the db
     try {
         const insertUser = db.prepare(`INSERT INTO users (username, password) VALUES (?, ?)`)
